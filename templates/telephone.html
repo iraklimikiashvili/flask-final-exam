@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{{ invention.name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ invention.name }}</h2>
+
+    <img class="photo"
+         src="{{ url_for('static', filename='images/' + invention.image) }}"
+         alt="{{ invention.name }}">
+
+    <ul class="meta">
+        <li><strong>გამომგონებელი:</strong> {{ invention.inventor }}</li>
+        <li><strong>წელი:</strong> {{ invention.year }}</li>
+        <li><strong>ქვეყანა:</strong> {{ invention.country }}</li>
+    </ul>
+
+    <p>{{ invention.description }}</p>
+
+    {% if invention.facts %}
+        <h3>საინტერესო ფაქტები</h3>
+        <ol>
+            {% for fact in invention.facts %}
+                <li>{{ fact }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p>ფაქტები არ არის დამატებული.</p>
+    {% endif %}
+
+    <!-- ბონუსი: ტექნიკური დეტალების ცხრილი -->
+    <hr style="border: 1px dashed #e0dbd0; margin: 25px 0;">
+    <h3>ტექნიკური დეტალები</h3>
+    <table border="1" style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+        <tr style="background-color: #2f4858; color: #fff;">
+            <th style="padding: 10px; text-align: left;">მახასიათებელი</th>
+            <th style="padding: 10px; text-align: left;">მნიშვნელობა</th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #e0dbd0;">კავშირის ტიპი</td>
+            <td style="padding: 10px; border: 1px solid #e0dbd0;">სადენიანი (ანალოგური)</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #e0dbd0;">პატენტის ნომერი</td>
+            <td style="padding: 10px; border: 1px solid #e0dbd0;">US 174,465</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

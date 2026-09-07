@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}{{ invention.name }}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ invention.name }}</h2>
+
+    <img class="photo"
+         src="{{ url_for('static', filename='images/' + invention.image) }}"
+         alt="{{ invention.name }}">
+
+    <ul class="meta">
+        <li><strong>გამომგონებელი:</strong> {{ invention.inventor }}</li>
+        <li><strong>წელი:</strong> {{ invention.year }}</li>
+        <li><strong>ქვეყანა:</strong> {{ invention.country }}</li>
+    </ul>
+
+    <p>{{ invention.description }}</p>
+
+    {% if invention.facts %}
+        <h3>საინტერესო ფაქტები</h3>
+        <ol>
+            {% for fact in invention.facts %}
+                <li>{{ fact }}</li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <p>ფაქტები არ არის დამატებული.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}გამოგონებები{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>დიდი გამოგონებები</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">მთავარი</a>
+            <a href="{{ url_for('gutenberg') }}">ბეჭდვის დაზგა</a>
+            <a href="{{ url_for('telephone') }}">ტელეფონი</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>პითონის ფინალური გამოცდა — Flask</p>
+    </footer>
+
+</body>
+</html>
